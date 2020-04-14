@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'byebug'
 class UsersController < ApplicationController
     def create
         user = User.create(id: SecureRandom.hex(6), name: params["name"], username: params["username"],
@@ -11,6 +12,6 @@ class UsersController < ApplicationController
     end
     def show
         user = User.all.find_by(id: params[:id])
-        render json: UserSerializer.new(user)
+        render json: UserSerializer.new(user).serialized_json
     end
 end
