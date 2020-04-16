@@ -14,3 +14,5 @@ require 'securerandom'
    
     User.create(id: SecureRandom.hex(6), name: Faker::Omniauth.twitter[:info][:name], username: Faker::Internet.username(specifier: 5..8), password: "joe" )
 end
+
+

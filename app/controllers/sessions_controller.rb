@@ -1,15 +1,21 @@
 class SessionsController < ApplicationController
 
-    def new
-        @user = User.find_by(:email => params[:email])
-        if @user && @user.authenticate(params[:password])
-          session[:user_id] = @user.id
-          render json: UserSerializer.new(users).serialized_json
-        else 
-            flash: { alert: "Couldn't find user" 
-            end
+  def new
+    @user = User.new
+  end
+def create 
+  user = User.find_by(:username => params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      render json: UserSerializer.new(user).serialized_json
+    else 
+        nil
     end
-    def create 
+end
+def destroy
+    session.clear
+    redirect_to root_path
+end
 
-    end
+    
 end

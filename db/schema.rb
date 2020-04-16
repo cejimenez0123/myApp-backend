@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_142719) do
+ActiveRecord::Schema.define(version: 2020_04_15_125924) do
+
+  create_table "page_users", id: false, force: :cascade do |t|
+    t.integer "id"
+    t.string "user_id"
+    t.string "page_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pages", id: false, force: :cascade do |t|
+    t.string "id"
+    t.string "title"
+    t.text "text"
+    t.string "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", id: false, force: :cascade do |t|
     t.string "id"

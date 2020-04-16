@@ -1,4 +1,4 @@
 class PageSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id,:text,:userid
+  attributes :id,:title,:text, :user_id
 end
